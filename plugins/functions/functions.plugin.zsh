@@ -1,5 +1,3 @@
-set -e
-
 BIN=$(dirname $0)
 
 source "${BIN}/code.zsh"
