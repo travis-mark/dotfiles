@@ -1,0 +1,10 @@
+POST https://mobecmsdev.penndot.gov/ECMS2Mobile_DEV/getUserDetails.json HTTP/1.1
+Authorization: Basic Yy1zdHVtdWdhbjpTaGFzaHUyMDIwMjA=
+Accept: : */*
+Accept-Encoding: Accept-Encoding
+userId: rspence
+Content-Type: application/json
+Content-Length: 0
+Host: mobecmsdev.penndot.gov
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.1.1 (java 1.5)
