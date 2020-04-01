@@ -1,5 +1,5 @@
 [includeIf "gitdir:/Volumes/Code/penndotvso.visualstudio.com/"]
-	path = /Volume/Code/dotfiles/config/.gitconfig_work
+	path = /Volumes/Code/Personal/dotfiles/config/.gitconfig_work
 
 [includeIf "gitdir:/Volumes/Code/Personal/"]
-    path = /Volume/Code/dotfiles/config/.gitconfig_home
+    path = /Volumes/Code/Personal/dotfiles/config/.gitconfig_home
