@@ -1,5 +1,5 @@
-[includeIf "gitdir:/Users/travis/Code/penndotvso.visualstudio.com/"]
-	path = /Users/travis/Code/travis-mark.github.com/dotfiles/config/.gitconfig_work
+[includeIf "gitdir:/Volumes/Code/penndotvso.visualstudio.com/"]
+	path = /Volumes/Code/travis-mark.github.com/dotfiles/config/.gitconfig_work
 
-[includeIf "gitdir:/Users/travis/Code/travis-mark.github.com/"]
-    path = /Users/travis/Code/travis-mark.github.com/dotfiles/config/.gitconfig_home
+[includeIf "gitdir:/Volumes/Code/travis-mark.github.com/"]
+    path = /Volumes/Code/travis-mark.github.com/dotfiles/config/.gitconfig_home

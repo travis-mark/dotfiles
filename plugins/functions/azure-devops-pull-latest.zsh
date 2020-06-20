@@ -3,6 +3,7 @@ function azure-devops-pull-latest {
     brew-depend jq
     pushd -q /Volumes/Code
     az login > /dev/null
+    az extension add --name azure-devops
     ORGANIZATIONS="penndotvso.visualstudio.com"
     for ORGANIZATION in $ORGANIZATIONS; do
         mkdir $ORGANIZATION 2> /dev/null
