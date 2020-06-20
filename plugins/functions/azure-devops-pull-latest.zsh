@@ -1,6 +1,5 @@
+# Depends: azure-cli, jq
 function azure-devops-pull-latest {
-    brew-depend azure-cli 
-    brew-depend jq
     pushd -q /Volumes/Code
     az login > /dev/null
     az extension add --name azure-devops
