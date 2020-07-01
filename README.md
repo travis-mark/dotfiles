@@ -5,7 +5,7 @@ This is a collection of my miscellaneous scripts and shell customizations.
 ### To setup a new machine
 
 1. Copy config files
-    cp -R /Volumes/Code/travis-mark.github.com/dotfiles/config ~
+    make copy-config
 
 2. Install oh-my-zsh and Homebrew
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
