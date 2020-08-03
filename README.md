@@ -1,15 +1,5 @@
 # Junk Drawer
 
-This is a collection of my miscellaneous scripts and shell customizations.
+This is a collection of my miscellaneous scripts and shell customizations. To setup a new machine run `make`.
 
-### To setup a new machine
 
-1. Copy config files
-    make copy-config
-
-2. Install oh-my-zsh and Homebrew
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-3. Grab other dependancies via Homebrew (execute in HOME directory after copy from step 1)
-    brew bundle 
