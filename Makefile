@@ -3,8 +3,6 @@ all: config setup
 config:
 	PWD=`pwd`
 	ln -sf ${PWD}/.gitconfig ${HOME}
-	ln -sf ${PWD}/.gitconfig ${HOME}
-	ln -sf ${PWD}/.gitconfig ${HOME}
 	ln -sf ${PWD}/.zshrc ${HOME}
 	ln -sf ${PWD}/bin ${HOME}
 	ln -sf ${PWD}/Brewfile ${HOME}
