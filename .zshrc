@@ -1,11 +1,18 @@
+# Reload script
+alias reload='source ~/.zshrc'
+
 # General / Addons
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # FZF Completions
 eval "$(starship init zsh)" # Starship Command Prompt
 PATH=$PATH:${HOME}/bin # Scripts
+GH='/Volumes/Code/travis-mark.github.com'
+PD='/Volumes/Code/penndotvso.visualstudio.com'
 
 # Projects
-alias dot='cd /Volumes/Code/travis-mark.github.com/dotfiles'
-alias fcweb='cd /Volumes/Code/penndotvso.visualstudio.com/Mobile-BOMO/FacilityEvalsWeb'
+alias dot='cd ${GH}/dotfiles'
+alias fcevl='cd ${PD}/Mobile-BOMO/FacilityEvals'
+alias fcweb='cd ${PD}/Mobile-BOMO/FacilityEvalsWeb'
+alias pduf='cd ${PD}/Mobile-PODS/PDUnifiedFramework'
 
 # Functions 
 source /Volumes/Code/travis-mark.github.com/dotfiles/functions/code.zsh 
