@@ -10,11 +10,13 @@ PD='/Volumes/Code/penndotvso.visualstudio.com'
 
 # Projects
 alias dot='cd ${GH}/dotfiles'
+alias lbi='cd ${PD}/Mobile-BOMO/LBR'
 alias fcevl='cd ${PD}/Mobile-BOMO/FacilityEvals'
 alias fcweb='cd ${PD}/Mobile-BOMO/FacilityEvalsWeb'
 alias pduf='cd ${PD}/Mobile-PODS/PDUnifiedFramework'
+alias psa='cd ${PD}/Mobile-Construction/PSA'
 
-# Functions 
+# Functions
 source /Volumes/Code/travis-mark.github.com/dotfiles/functions/code.zsh 
 source /Volumes/Code/travis-mark.github.com/dotfiles/functions/image-size.zsh 
 source /Volumes/Code/travis-mark.github.com/dotfiles/functions/ip.zsh 
