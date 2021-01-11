@@ -5,6 +5,7 @@ alias reload='source ~/.zshrc'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # FZF Completions
 eval "$(starship init zsh)" # Starship Command Prompt
 PATH=$PATH:${HOME}/bin # Scripts
+STOW_DIR=${HOME}/GitHub/dotfiles
 
 function code {
     open -a "Visual Studio Code" $argv
@@ -24,6 +25,16 @@ function image-size {
 # Adapted from: https://github.com/ttscoff/fish_files/blob/master/functions/ip.fish
 function ip {
     curl -Ss icanhazip.com
+}
+
+function stow-home {
+    stow -v -d ${STOW_DIR} -t ${HOME} -D work
+    stow -v -d ${STOW_DIR} -t ${HOME} -R home
+}
+
+function stow-work {
+    stow -v -d ${STOW_DIR} -t ${HOME} -D home
+    stow -v -d ${STOW_DIR} -t ${HOME} -R work
 }
 
 function xc {
