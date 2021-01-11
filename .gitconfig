@@ -1,6 +1,0 @@
-[includeIf "gitdir:/Volumes/Code/work/"]
-	path = /Volumes/Code/home/dotfiles/.gitconfig_work
-
-[includeIf "gitdir:/Volumes/Code/home/"]
-    path = /Volumes/Code/home/dotfiles/.gitconfig_home
-
