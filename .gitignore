@@ -1,2 +1,4 @@
 .DS_Store
 config/Brewfile.lock.json
+config/.emacs.d/auto-save-list/
+config/.emacs.d/elpa/
