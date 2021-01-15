@@ -27,6 +27,10 @@ function ip {
     curl -Ss icanhazip.com
 }
 
+function stow-apply {
+    stow -v -d ${STOW_DIR} -t ${HOME} -R config
+}
+
 function stow-home {
     stow -v -d ${STOW_DIR} -t ${HOME} -D work
     stow -v -d ${STOW_DIR} -t ${HOME} -R home
