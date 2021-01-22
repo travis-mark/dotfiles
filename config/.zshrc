@@ -34,12 +34,14 @@ function stow-apply {
 function at-home {
     stow -v -d ${STOW_DIR} -t ${HOME} -D work
     stow -v -d ${STOW_DIR} -t ${HOME} -R home
+    ssh-add -d
     ssh-add $HOME/.ssh/id_rsa
 }
 
 function at-work {
     stow -v -d ${STOW_DIR} -t ${HOME} -D home
     stow -v -d ${STOW_DIR} -t ${HOME} -R work
+    ssh-add -d
     ssh-add $HOME/.ssh/id_rsa_penndot
 }
 
