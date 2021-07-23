@@ -1,15 +1,22 @@
+# Actual zsh configs
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+bindkey -e
+
 # Reload script
 alias reload='source ~/.zshrc'
 
 # General / Addons
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # FZF Completions
-eval "$(starship init zsh)" # Starship Command Prompt
+# eval "$(starship init zsh)" # Starship Command Prompt
 PATH=$PATH:${HOME}/bin # Scripts
 STOW_DIR=${HOME}/GitHub/dotfiles
 
-function code {
-    open -a "Visual Studio Code" $argv
-}
+# App launchers
+function code { open -a "Visual Studio Code" $argv }
+function fork { open -a "Fork" $argv }
+function xc { open -a "Xcode" $argv }
 
 # Adapted from: https://github.com/ttscoff/fish_files/blob/master/functions/imgsize.fish
 function image-size {
@@ -31,25 +38,17 @@ function stow-apply {
     stow -v -d ${STOW_DIR} -t ${HOME} -R config
 }
 
-function at-home {
-    stow -v -d ${STOW_DIR} -t ${HOME} -D work
-    stow -v -d ${STOW_DIR} -t ${HOME} -R home
-    ssh-add -d
-    ssh-add $HOME/.ssh/id_rsa
-}
-
-function at-work {
-    stow -v -d ${STOW_DIR} -t ${HOME} -D home
-    stow -v -d ${STOW_DIR} -t ${HOME} -R work
-    ssh-add -d
-    ssh-add $HOME/.ssh/id_rsa_penndot
-}
-
-function xc {
-    open -a "Xcode" $argv
-}
-
 # Courtesy: https://scriptingosx.com/2017/04/on-viewing-man-pages/
 function xman() { 
     open x-man-page://$@ ; 
+}
+
+function git-claim-home {
+    git config user.name "Travis Luckenbaugh" 
+    git config user.email "tluckenbaugh@gmail.com"
+}
+
+function git-claim-penndot {
+    git config user.name "Travis Luckenbaugh" 
+    git config user.emailg "c-trlucken@penndot.gov"
 }
