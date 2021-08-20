@@ -5,21 +5,18 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     azure-cli
-    cocoapods
+    # cocoapods # currently non-functional, using gems version
     clojure
     emacs
     fd
     fzf
     git-standup
-    python3 
+    # python3 # Overwrites system python(2), use nix-shell -p python3 instead when needed
     jq
     nodejs
     ripgrep
-    # stow # Use nix-shell -p stow instead
     visidata
   ];
-
-  
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix

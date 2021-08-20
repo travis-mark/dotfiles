@@ -9,6 +9,7 @@ export JAVA_HOME=/nix/store/24pg7m8hzcvym9lpi6nffnqj93bbbs6x-zulu-11.41.23
 
 # Reload script
 alias reload='source ~/.zshrc'
+alias p3='nix-shell -p python3 python3Packages.markdown'
 
 # General / Addons
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # FZF Completions
@@ -54,4 +55,4 @@ function git-claim-home {
 function git-claim-penndot {
     git config user.name "Travis Luckenbaugh" 
     git config user.email "c-trlucken@pa.gov"
-}if [ -e /Users/travis/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/travis/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+}
