@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-az login > /dev/null
+#az login > /dev/null
 az extension add --name azure-devops
 ORGANIZATIONS="penndotvso.visualstudio.com"
 for ORGANIZATION in $ORGANIZATIONS; do
@@ -8,12 +8,15 @@ for ORGANIZATION in $ORGANIZATIONS; do
     for PROJECT ($=PROJECTS); do
         REPOS=`az repos list --organization "https://$ORGANIZATION" --project $PROJECT | jq '.[].sshUrl' --raw-output`
         for REPO ($=REPOS); do
-            git clone $REPO
-        done
-        for repo in `ls`; do 
-            pushd -q $repo
-            git pull
-            popd -q
+            DIR=$(echo ${REPO} | awk 'BEGIN { FS = "/" } ; {print $(NF)}')
+            echo "\e[0;32m${DIR} \e[m" 
+            if [[ -d ${DIR} ]]; then 
+                pushd -q ${DIR}
+                git pull
+                popd -q
+            else
+                git clone ${REPO}
+            fi
         done
     done
 done
