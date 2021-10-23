@@ -9,7 +9,6 @@ export JAVA_HOME=/nix/store/24pg7m8hzcvym9lpi6nffnqj93bbbs6x-zulu-11.41.23
 
 # Reload script
 alias reload='source ~/.zshrc'
-alias p3='nix-shell -p python3 python3Packages.markdown'
 
 # General / Addons
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # FZF Completions

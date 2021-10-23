@@ -11,7 +11,10 @@
     fd
     fzf
     git-standup
-    # python3 # Overwrites system python(2), use nix-shell -p python3 instead when needed
+    python3
+    python39Packages.setuptools
+    python39Packages.pip
+    python39Packages.markdown
     jq
     nodejs
     ripgrep
