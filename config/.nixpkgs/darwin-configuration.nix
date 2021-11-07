@@ -11,6 +11,7 @@
     fd
     fzf
     git-standup
+    imagemagick
     python3
     python39Packages.setuptools
     python39Packages.pip
