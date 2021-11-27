@@ -15,7 +15,7 @@ alias reload='source ~/.zshrc'
 
 # General / Addons
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # FZF Completions
-# eval "$(starship init zsh)" # Starship Command Prompt
+eval "$(starship init zsh)" # Starship Command Prompt
 PATH=$PATH:${HOME}/bin # Scripts
 STOW_DIR=${HOME}/GitHub/dotfiles
 
