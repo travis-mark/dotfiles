@@ -4,8 +4,8 @@ HISTSIZE=1000
 SAVEHIST=1000
 bindkey -e
 
-# Misc PIP packages
-PATH=/Users/travis/.local/bin:$PATH 
+PATH=/Users/travis/.local/bin:$PATH # Misc PIP packages
+PATH=/Users/travis/go/bin:$PATH # Misc Go packages
 
 # Programming
 export JAVA_HOME=/nix/store/24pg7m8hzcvym9lpi6nffnqj93bbbs6x-zulu-11.41.23
