@@ -3,3 +3,11 @@
     color: rgb(210,210,210) !important; 
     background-color: rgb(5,5,5);
 }
+
+.feedcell, .episodecell {
+    color: rgb(210,210,210) !important; 
+}
+
+.extendedepisodecell {
+    color: rgb(210,210,210) !important; 
+}
