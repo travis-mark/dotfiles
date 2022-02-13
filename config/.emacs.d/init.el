@@ -21,6 +21,13 @@
   (save-some-buffers t))
 (add-hook 'focus-out-hook 'save-all)
 
+;; Source Control
+(use-package magit
+  :ensure t
+  :init
+  (progn
+    (bind-key "C-x g" 'magit-status)))
+     
 ;; Theme
 (load-theme 'tango t)
 
