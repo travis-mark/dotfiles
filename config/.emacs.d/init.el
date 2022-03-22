@@ -26,44 +26,39 @@
   (save-some-buffers t))
 (add-hook 'focus-out-hook 'save-all)
 
-;; C
-(setq-default c-basic-offset 2)
-
 ;; Completion
 ;; Derived from https://martinsosic.com/development/emacs/2017/12/09/emacs-cpp-ide.html
 (use-package company :ensure t
   :config
   (progn
     (add-hook 'after-init-hook 'global-company-mode)
-;;    (global-set-key (kbd "M-/") 'company-complete-common-or-cycle) 
     (setq company-idle-delay 0)))
 
-;; Line numbers
+;; Eshell fix path
+;; Source: https://www.emacswiki.org/emacs/ExecPath
+(defun set-exec-path-from-shell-PATH ()
+  "Set up Emacs' `exec-path' and PATH environment variable to match that used by the user's shell. This is particularly useful under Mac OS X and macOS, where GUI apps are not started from a shell."
+  (interactive)
+  (let ((path-from-shell (replace-regexp-in-string
+			  "[ \t\n]*$" "" (shell-command-to-string
+					  "$SHELL --login -c 'echo $PATH'"
+						    ))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+(set-exec-path-from-shell-PATH)
+
+;; Configs
 (global-display-line-numbers-mode 1) 
-
-;; LSP
-;; Ref: https://ianyepan.github.io/posts/emacs-ide/
-;; (use-package lsp-mode
-;;   :hook ((c++-mode python-mode java-mode js-mode) . lsp-deferred)
-;;   :commands lsp)
-
-;; (use-package lsp-ui
-;;   :commands lsp-ui-mode)
-
-;; Recent files
-;; Derived from https://systemcrafters.net/emacs-from-scratch/the-best-default-settings/#remembering-recently-edited-files
-(if (recentf-mode 1)
-    (bind-key "C-x r" 'recentf-open-files))
-
-;; Source Control
-(use-package magit :ensure t
-  :init
-  (progn
-    (bind-key "C-x g" 'magit-status)))
-
-;; Startup
-(setq inhibit-startup-message t
-      visible-bell nil)
-
-;; Theme
 (load-theme 'tango-dark t)
+(setq-default c-basic-offset 2)
+(setq inhibit-startup-message t)
+(setq vc-follow-symlinks nil)
+(setq visible-bell nil)
+
+;; Keybindings
+(if (recentf-mode 1) (bind-key "C-x r" 'recentf-open-files))
+(use-package magit :ensure t :init (progn (bind-key "C-x g" 'magit-status)))
+
+
+
