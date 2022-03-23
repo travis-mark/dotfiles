@@ -26,13 +26,25 @@
   (save-some-buffers t))
 (add-hook 'focus-out-hook 'save-all)
 
-;; Completion
-;; Derived from https://martinsosic.com/development/emacs/2017/12/09/emacs-cpp-ide.html
+;; Completion (company + ido)
 (use-package company :ensure t
   :config
   (progn
     (add-hook 'after-init-hook 'global-company-mode)
     (setq company-idle-delay 0)))
+(unless (or (fboundp 'helm-mode) (fboundp 'ivy-mode))
+    (ido-mode t)
+    (setq ido-enable-flex-matching t))
+
+;; Python
+(defun set-python-path-from-which ()
+  "Grab a suitable python (2 or 3) from path. Added since macOS removed default python."
+  (interactive)
+  (let*
+      ((python-path (shell-command-to-string "which python python3 | grep '^/' | head -n 1"))
+       (python-path-trimmed (replace-regexp-in-string "[ \t\n]*$" "" python-path)))
+    (setq python-shell-interpreter python-path-trimmed)))
+    
 
 ;; Eshell fix path
 ;; Source: https://www.emacswiki.org/emacs/ExecPath
@@ -45,20 +57,25 @@
 						    ))))
     (setenv "PATH" path-from-shell)
     (setq exec-path (split-string path-from-shell path-separator))))
-
 (set-exec-path-from-shell-PATH)
 
 ;; Configs
 (global-display-line-numbers-mode 1) 
 (load-theme 'tango-dark t)
+(save-place-mode 1)
+(show-paren-mode 1)
 (setq-default c-basic-offset 2)
-(setq inhibit-startup-message t)
-(setq vc-follow-symlinks nil)
-(setq visible-bell nil)
+(setq inhibit-startup-message t
+      vc-follow-symlinks nil
+      visible-bell nil)
 
 ;; Keybindings
 (if (recentf-mode 1) (bind-key "C-x r" 'recentf-open-files))
 (use-package magit :ensure t :init (progn (bind-key "C-x g" 'magit-status)))
-
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-M-s") 'isearch-forward)
+(global-set-key (kbd "C-M-r") 'isearch-backward)
 
 
