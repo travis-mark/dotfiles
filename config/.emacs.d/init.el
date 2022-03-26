@@ -15,39 +15,32 @@
         use-package-expand-minimally t))
 
 ;; Auto-Reload on file / folder change
-;; Source: https://systemcrafters.net/emacs-from-scratch/the-best-default-settings/#automatically-revert-buffers-for-changed-files
+;; https://systemcrafters.net/emacs-from-scratch/the-best-default-settings/#automatically-revert-buffers-for-changed-files
 (global-auto-revert-mode 1)
 (setq global-auto-revert-non-file-buffers t)
 
 ;; AutoSave
-;; Source: https://www.emacswiki.org/emacs/AutoSave
+;;https://www.emacswiki.org/emacs/AutoSave
 (defun save-all ()
   (interactive)
   (save-some-buffers t))
 (add-hook 'focus-out-hook 'save-all)
 
-;; Completion (company + ido)
+;; Company
 (use-package company :ensure t
   :config
   (progn
     (add-hook 'after-init-hook 'global-company-mode)
     (setq company-idle-delay 0)))
+
+;; Ido
+;; https://www.emacswiki.org/emacs/InteractivelyDoThings
 (unless (or (fboundp 'helm-mode) (fboundp 'ivy-mode))
     (ido-mode t)
     (setq ido-enable-flex-matching t))
 
-;; Python
-(defun set-python-path-from-which ()
-  "Grab a suitable python (2 or 3) from path. Added since macOS removed default python."
-  (interactive)
-  (let*
-      ((python-path (shell-command-to-string "which python python3 | grep '^/' | head -n 1"))
-       (python-path-trimmed (replace-regexp-in-string "[ \t\n]*$" "" python-path)))
-    (setq python-shell-interpreter python-path-trimmed)))
-    
-
 ;; Eshell fix path
-;; Source: https://www.emacswiki.org/emacs/ExecPath
+;; https://www.emacswiki.org/emacs/ExecPath
 (defun set-exec-path-from-shell-PATH ()
   "Set up Emacs' `exec-path' and PATH environment variable to match that used by the user's shell. This is particularly useful under Mac OS X and macOS, where GUI apps are not started from a shell."
   (interactive)
@@ -73,6 +66,9 @@
 (if (recentf-mode 1) (bind-key "C-x r" 'recentf-open-files))
 (use-package magit :ensure t :init (progn (bind-key "C-x g" 'magit-status)))
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x x") 'execute-extended-command)
+(global-set-key (kbd "C-x C-x") 'execute-extended-command)
+;; (global-set-key (kbd "C-x C-x") 'exchange-point-and-mark) ;; TODO: Find another keybind?
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
