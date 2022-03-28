@@ -1,12 +1,11 @@
 ;; Third-party packages
-;; Source: https://ianyepan.github.io/posts/setting-up-use-package/
+;; https://ianyepan.github.io/posts/setting-up-use-package/
 (require 'package)
 (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("org"   . "https://orgmode.org/elpa/"))
 (setq package-enable-at-startup nil)
 (package-initialize)
-
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -20,11 +19,16 @@
 (setq global-auto-revert-non-file-buffers t)
 
 ;; AutoSave
-;;https://www.emacswiki.org/emacs/AutoSave
+;; https://www.emacswiki.org/emacs/AutoSave
 (defun save-all ()
   (interactive)
   (save-some-buffers t))
 (add-hook 'focus-out-hook 'save-all)
+
+;; Backups
+(setq backup-by-copying t)
+(unless backup-directory-alist
+  (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups")))))
 
 ;; Company
 (use-package company :ensure t
@@ -33,11 +37,24 @@
     (add-hook 'after-init-hook 'global-company-mode)
     (setq company-idle-delay 0)))
 
-;; Ido
-;; https://www.emacswiki.org/emacs/InteractivelyDoThings
-(unless (or (fboundp 'helm-mode) (fboundp 'ivy-mode))
-    (ido-mode t)
-    (setq ido-enable-flex-matching t))
+;; Configs
+;; `C-h f` (describe-function) and `C-h o` (describe-symbol) to see what these do
+(global-display-line-numbers-mode 1) 
+(load-theme 'tango-dark t)
+(save-place-mode 1)
+(savehist-mode 1)
+(show-paren-mode 1)
+(setq-default c-basic-offset 2
+	      indent-tabs-mode nil)
+(setq apropos-do-all t
+      custom-file (expand-file-name "custom.el" user-emacs-directory)
+      ediff-window-setup-function 'ediff-setup-windows-plain
+      inhibit-startup-message t
+      load-prefer-newer t
+      require-final-newline t
+      save-interprogram-paste-before-kill t
+      vc-follow-symlinks nil
+      visible-bell nil)
 
 ;; Eshell fix path
 ;; https://www.emacswiki.org/emacs/ExecPath
@@ -52,26 +69,30 @@
     (setq exec-path (split-string path-from-shell path-separator))))
 (set-exec-path-from-shell-PATH)
 
-;; Configs
-(global-display-line-numbers-mode 1) 
-(load-theme 'tango-dark t)
-(save-place-mode 1)
-(show-paren-mode 1)
-(setq-default c-basic-offset 2)
-(setq inhibit-startup-message t
-      vc-follow-symlinks nil
-      visible-bell nil)
-
 ;; Keybindings
 (if (recentf-mode 1) (bind-key "C-x r" 'recentf-open-files))
 (use-package magit :ensure t :init (progn (bind-key "C-x g" 'magit-status)))
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-x x") 'execute-extended-command)
-(global-set-key (kbd "C-x C-x") 'execute-extended-command)
-;; (global-set-key (kbd "C-x C-x") 'exchange-point-and-mark) ;; TODO: Find another keybind?
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
+;; Ido
+;; https://www.emacswiki.org/emacs/InteractivelyDoThings
+(unless (or (fboundp 'helm-mode) (fboundp 'ivy-mode))
+  (ido-mode t)
+  (setq ido-enable-flex-matching t))
 
+;; Smex
+(use-package smex :ensure t
+  :init
+  (progn
+    (global-set-key (kbd "C-x C-x") 'smex)))
+
+;; Uniquify (fix duplicate buffer names)
+;; https://www.emacswiki.org/emacs/uniquify
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+  
+      
