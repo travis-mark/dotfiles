@@ -69,6 +69,9 @@
     (setq exec-path (split-string path-from-shell path-separator))))
 (set-exec-path-from-shell-PATH)
 
+;; Python
+(setq python-indent-offset 4)
+
 ;; Keybindings
 (if (recentf-mode 1) (bind-key "C-x r" 'recentf-open-files))
 (use-package magit :ensure t :init (progn (bind-key "C-x g" 'magit-status)))
@@ -94,5 +97,4 @@
 ;; https://www.emacswiki.org/emacs/uniquify
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
-  
-      
+
