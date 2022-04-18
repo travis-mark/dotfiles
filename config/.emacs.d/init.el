@@ -69,10 +69,14 @@
     (setq exec-path (split-string path-from-shell path-separator))))
 (set-exec-path-from-shell-PATH)
 
+;; Org mode
+(setq org-agenda-files (list "~/Documents/me/" "~/Documents/pd/"))
+
 ;; Python
 (setq python-indent-offset 4)
 
 ;; Keybindings
+(global-set-key (kbd "C-x a") 'org-agenda)
 (if (recentf-mode 1) (bind-key "C-x r" 'recentf-open-files))
 (use-package magit :ensure t :init (progn (bind-key "C-x g" 'magit-status)))
 (global-set-key (kbd "C-x C-b") 'ibuffer)
