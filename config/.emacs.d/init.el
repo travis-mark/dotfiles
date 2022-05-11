@@ -38,7 +38,8 @@
     (setq company-idle-delay 0)))
 
 ;; Configs
-;; `C-h f` (describe-function) and `C-h o` (describe-symbol) to see what these do
+;; `C-h f` (describe-function) and
+;; `C-h o` (describe-symbol) to see what these do
 (global-display-line-numbers-mode 1) 
 (load-theme 'tango-dark t)
 (save-place-mode 1)
@@ -59,7 +60,10 @@
 ;; Eshell fix path
 ;; https://www.emacswiki.org/emacs/ExecPath
 (defun set-exec-path-from-shell-PATH ()
-  "Set up Emacs' `exec-path' and PATH environment variable to match that used by the user's shell. This is particularly useful under Mac OS X and macOS, where GUI apps are not started from a shell."
+  "Set up Emacs' `exec-path' and PATH environment variable to
+match that used by the user's shell. This is particularly useful
+under Mac OS X and macOS, where GUI apps are not started from a
+shell."
   (interactive)
   (let ((path-from-shell (replace-regexp-in-string
 			  "[ \t\n]*$" "" (shell-command-to-string
@@ -69,11 +73,17 @@
     (setq exec-path (split-string path-from-shell path-separator))))
 (set-exec-path-from-shell-PATH)
 
-;; Org mode
-(setq org-agenda-files (list "~/Documents/me/" "~/Documents/pd/"))
+;; Flyspell
+(eval-after-load "flyspell"
+  '(progn
+     (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
+     (define-key flyspell-mouse-map [mouse-3] #'undefined)))
 
-;; Python
-(setq python-indent-offset 4)
+;; Ido
+;; https://www.emacswiki.org/emacs/InteractivelyDoThings
+(unless (or (fboundp 'helm-mode) (fboundp 'ivy-mode))
+  (ido-mode t)
+  (setq ido-enable-flex-matching t))
 
 ;; Keybindings
 (global-set-key (kbd "C-x a") 'org-agenda)
@@ -85,13 +95,15 @@
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
-;; Ido
-;; https://www.emacswiki.org/emacs/InteractivelyDoThings
-(unless (or (fboundp 'helm-mode) (fboundp 'ivy-mode))
-  (ido-mode t)
-  (setq ido-enable-flex-matching t))
+;; Org mode
+(require 'org)
+(setq org-agenda-files (list "~/Documents/me/" "~/Documents/pd/"))
+(add-to-list 'org-link-frame-setup '(file . find-file))  ;; Open in same window
 
-;; Smex
+;; Python
+(setq python-indent-offset 4)
+
+;; Smex (execute-extended-command with completions)
 (use-package smex :ensure t
   :init
   (progn

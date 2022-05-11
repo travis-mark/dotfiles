@@ -58,3 +58,6 @@ function git-claim-penndot {
     git config user.name "Travis Luckenbaugh" 
     git config user.email "c-trlucken@pa.gov"
 }
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+alias neocities=$(echo `gem which neocities` | sed s:lib/neocities.rb$:bin/neocities:)
