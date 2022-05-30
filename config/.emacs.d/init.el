@@ -97,7 +97,7 @@ shell."
 
 ;; Org mode
 (require 'org)
-(setq org-agenda-files (list "~/Documents/me/" "~/Documents/pd/"))
+(setq org-agenda-files (list "~/Documents/me/"))
 (add-to-list 'org-link-frame-setup '(file . find-file))  ;; Open in same window
 
 ;; Python
@@ -114,3 +114,12 @@ shell."
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
+;; Custom Functions
+(defun tl-new-journal ()
+  (interactive)
+  (split-window-right)
+  (other-window 0)
+  (let ((buffer (generate-new-buffer "today"))
+        (date (format-time-string "%Y%m%d" (current-time))))
+    (switch-to-buffer buffer)
+    (write-file (concat "~/Documents/me/01 - Journal/" date ".org"))))
