@@ -97,7 +97,7 @@ shell."
 
 ;; Org mode
 (require 'org)
-(setq org-agenda-files (list "~/Documents/me/"))
+(setq org-agenda-files (list "~/Documents/journal/" "~/Documents/projects/"))
 (add-to-list 'org-link-frame-setup '(file . find-file))  ;; Open in same window
 
 ;; Python
@@ -122,4 +122,4 @@ shell."
   (let ((buffer (generate-new-buffer "today"))
         (date (format-time-string "%Y%m%d" (current-time))))
     (switch-to-buffer buffer)
-    (write-file (concat "~/Documents/me/01 - Journal/" date ".org"))))
+    (write-file (concat "~/Documents/journal/" date ".org"))))
