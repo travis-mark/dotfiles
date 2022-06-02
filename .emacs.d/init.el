@@ -97,7 +97,7 @@ shell."
 
 ;; Org mode
 (require 'org)
-(setq org-agenda-files (list "~/Documents/journal/" "~/Documents/projects/"))
+(setq org-agenda-files (list "~/Documents/journal/" "~/Documents/notes/" "~/Documents/work/"))
 (add-to-list 'org-link-frame-setup '(file . find-file))  ;; Open in same window
 
 ;; Python
