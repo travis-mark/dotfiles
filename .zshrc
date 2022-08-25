@@ -7,6 +7,7 @@ PATH="/opt/homebrew/opt/openjdk/bin:$PATH" # Java
 PATH=${HOME}/.local/bin:$PATH # PIP
 PATH=${HOME}/go/bin:$PATH # Go
 PATH="/opt/homebrew/opt/ruby/bin:$PATH" # Ruby
+PATH=${HOME}/.emacs.d/bin:$PATH # Emacs
 PATH=${HOME}/bin:$PATH # Scripts
 
 function code { open -a "Visual Studio Code" $argv }
@@ -41,4 +42,3 @@ function up {
     fg
 }
 
-# TODO: connect to eshell
