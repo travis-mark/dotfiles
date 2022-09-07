@@ -17,9 +17,23 @@ function safari { open -a "Safari" $argv }
 function xc { open -a "Xcode" $argv }
 function reload_zsh_config { source ~/.zshrc }
 
-alias ll='exa -l'
-alias neocities=$(echo `gem which neocities` | sed s:lib/neocities.rb$:bin/neocities:)
-alias wordle='cat /usr/share/dict/words | grep "^.....$"'
+export CODE="${HOME}/Code"
+
+function use {
+    # Does nothing for now.
+    # Check for data caches or tools.
+    # Implement someday.
+}
+
+function project-build-project-list {
+    find ${CODE} -name .git | sed s/.git$//g > ~/.projects
+}
+
+function project-change-directory {
+    use projects
+    use selecta
+    cd $(cat ~/.projects | selecta)
+}
 
 function git-claim-personal {
     git config --add --local user.name 'Travis Luckenbaugh'
@@ -42,3 +56,7 @@ function up {
     fg
 }
 
+alias ll='exa -l'
+alias pcd='project-change-directory'
+alias neocities=$(echo `gem which neocities` | sed s:lib/neocities.rb$:bin/neocities:)
+alias wordle='cat /usr/share/dict/words | grep "^.....$"'
