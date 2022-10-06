@@ -1,0 +1,3 @@
+#!/bin/sh
+
+touch ~/.hushlogin # Silence "last login" message

@@ -18,6 +18,8 @@ function xc { open -a "Xcode" $argv }
 function reload_zsh_config { source ~/.zshrc }
 
 export CODE="${HOME}/Code"
+PROMPT="%F{51}%1~%f %# "
+RPROMPT="%w %T [%?]"
 
 function use {
     # Does nothing for now.
