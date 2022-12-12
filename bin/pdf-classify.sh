@@ -32,6 +32,8 @@ for i in $@; do
         else
             mv "$i" "$TARGET"
         fi
+    elif pdfgrep -q "PPL Electric Utilities" "$i" &> /dev/null; then
+	echo "$i :: electric bill"
     else
         echo "$i :: unknown"
     fi

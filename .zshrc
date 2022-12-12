@@ -62,3 +62,4 @@ alias ll='exa -l'
 alias pcd='project-change-directory'
 alias neocities=$(echo `gem which neocities` | sed s:lib/neocities.rb$:bin/neocities:)
 alias wordle='cat /usr/share/dict/words | grep "^.....$"'
+alias skiping='ping skitheeast.asuscomm.com'
