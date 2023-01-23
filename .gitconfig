@@ -1,0 +1,12 @@
+[alias]
+  rank = "shortlog -sne --no-merges"
+
+[init]
+	defaultBranch = main
+
+[pull]
+	ff = only
+
+[user]
+	name = Travis Luckenbaugh
+	email = tluckenbaugh@gmail.com
