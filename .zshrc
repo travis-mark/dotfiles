@@ -28,7 +28,7 @@ function use {
 }
 
 function project-build-project-list {
-    find ${CODE} -name .git | sed s/.git$//g > ~/.projects
+    find ${CODE} -name .git -maxdepth 3 | sed s/.git$//g > ~/.projects
 }
 
 function project-change-directory {
