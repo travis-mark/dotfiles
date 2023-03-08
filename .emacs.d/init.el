@@ -100,6 +100,14 @@ shell."
 (require 'org)
 (global-set-key (kbd "C-x a") 'org-agenda)
 
+;; Projectile
+(use-package projectile
+  :init
+  (progn
+    (projectile-mode +1)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)))
+
+
 ;; Python
 (setq python-indent-offset 4)
 
