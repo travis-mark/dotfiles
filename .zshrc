@@ -20,8 +20,8 @@ function xc { open -a "Xcode" $argv }
 function reload_zsh_config { source ~/.zshrc }
 
 export CODE="${HOME}/Code"
-PROMPT="%F{51}%1~%f %# "
-RPROMPT="%w %T [%?]"
+PROMPT="%F{yellow}%T %F{cyan}%~ %F{white}%# "
+RPROMPT=""
 
 function use {
     # Does nothing for now.
@@ -61,7 +61,9 @@ function up {
 }
 
 alias ll='exa -l'
-alias pcd='project-change-directory'
-alias neocities=$(echo `gem which neocities` | sed s:lib/neocities.rb$:bin/neocities:)
-alias wordle='cat /usr/share/dict/words | grep "^.....$"'
+alias pcd='cd $(cat ${HOME}/.projects | fzf)'
+alias dictwords='cat /usr/share/dict/words | fzf'
+alias octordle='cat ${HOME}/share/octordle | fzf'
 alias skiping='ping skitheeast.asuscomm.com'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
