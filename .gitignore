@@ -2,12 +2,14 @@
 config/Brewfile.lock.json
 
 # Emacs gunk
-/.emacs.d/backups/
-/.emacs.d/elpa/
-/.emacs.d/history
-/.emacs.d/ido.last
-/.emacs.d/places
-/.emacs.d/projectile-bookmarks.eld
-/.emacs.d/projectile.cache
-/.emacs.d/recentf
-/.emacs.d/transient/
+.emacs.d/auto-save-list
+.emacs.d/backups/
+.emacs.d/elpa/
+.emacs.d/history
+.emacs.d/ido.last
+.emacs.d/places
+.emacs.d/projectile-bookmarks.eld
+.emacs.d/projectile.cache
+.emacs.d/recentf
+.emacs.d/transient/
+
