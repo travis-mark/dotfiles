@@ -1,5 +1,7 @@
 [alias]
-  rank = "shortlog -sne --no-merges"
+	lg = "log --graph --decorate --pretty=\"format:%h - %an: %s\" --abbrev-commit"
+	sl = shortlog -sne --no-merges
+	st = status
 
 [init]
 	defaultBranch = main
