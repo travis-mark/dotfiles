@@ -37,6 +37,17 @@
     (add-hook 'after-init-hook 'global-company-mode)
     (setq company-idle-delay 0)))
 
+(use-package ivy
+  :ensure t
+  :config
+  (ivy-mode 1))
+
+(use-package swiper
+  :ensure t)
+
+(use-package counsel
+  :ensure t)
+
 ;; Configs
 ;; `C-h f` (describe-function) and
 ;; `C-h o` (describe-symbol) to see what these do
