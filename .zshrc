@@ -33,11 +33,6 @@ function project-build-project-list {
     find ${CODE} -name .git -maxdepth 3 | sed s/.git$//g > ~/.projects
 }
 
-function project-change-directory {
-    use projects
-    use selecta
-    cd $(cat ~/.projects | selecta)
-}
 
 function git-claim-personal {
     git config --add --local user.name 'Travis Luckenbaugh'
