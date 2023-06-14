@@ -27,6 +27,10 @@ function list-projects {
     find ${CODE} -name .git -maxdepth 3 | sed s/.git$//g
 }
 
+function pick-commit {
+    git log --decorate --pretty="format:%h - %an: %s" --abbrev-commit | fzf --preview 'git show --color=always --stat {1}' | awk '{print $1}'
+}
+
 function git-claim-personal {
     git config --add --local user.name 'Travis Luckenbaugh'
     git config --add --local user.email 'tluckenbaugh@gmail.com'
@@ -49,6 +53,7 @@ function up {
 }
 
 alias ll='exa -l'
+alias log='git checkout $(pick-commit)'
 alias pcd='cd $(list-projects | fzf)'
 alias dictwords='cat /usr/share/dict/words | fzf'
 alias octordle='cat ${HOME}/share/octordle | fzf'
