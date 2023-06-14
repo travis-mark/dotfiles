@@ -23,16 +23,9 @@ export CODE="${HOME}/Code"
 PROMPT="%F{yellow}%T %F{cyan}%~ %F{white}%# "
 RPROMPT=""
 
-function use {
-    # Does nothing for now.
-    # Check for data caches or tools.
-    # Implement someday.
+function list-projects {
+    find ${CODE} -name .git -maxdepth 3 | sed s/.git$//g
 }
-
-function project-build-project-list {
-    find ${CODE} -name .git -maxdepth 3 | sed s/.git$//g > ~/.projects
-}
-
 
 function git-claim-personal {
     git config --add --local user.name 'Travis Luckenbaugh'
@@ -46,7 +39,7 @@ function git-claim-subaru {
     git config --add --local core.sshCommand 'ssh -i ~/.ssh/id_ed25519_subaru -o IdentitiesOnly=yes'
 }
 
-# TODO: go looking for package.json, __init__.py, etc...
+# Run HTTP server then open browser
 function up {
     PORT=$(( $RANDOM % 48576 + 16384 ))
     VIEWER=${1?open}
@@ -56,7 +49,7 @@ function up {
 }
 
 alias ll='exa -l'
-alias pcd='cd $(cat ${HOME}/.projects | fzf)'
+alias pcd='cd $(list-projects | fzf)'
 alias dictwords='cat /usr/share/dict/words | fzf'
 alias octordle='cat ${HOME}/share/octordle | fzf'
 alias skiping='ping skitheeast.asuscomm.com'
