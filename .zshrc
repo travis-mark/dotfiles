@@ -52,6 +52,10 @@ function up {
     fg
 }
 
+function xman {
+    open x-man-page://$1
+}
+
 alias ll='exa -l'
 alias log='git checkout $(pick-commit)'
 alias pcd='cd $(list-projects | fzf)'
