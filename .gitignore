@@ -1,5 +1,5 @@
 .DS_Store
-config/Brewfile.lock.json
+Brewfile.lock.json
 
 # Emacs gunk
 .emacs.d/auto-save-list

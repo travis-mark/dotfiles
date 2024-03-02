@@ -1,0 +1,7 @@
+brew "cocoapods"
+brew "fzf"
+brew "elixir"
+brew "gh"
+brew "imagemagick"
+brew "python3"
+brew "ripgrep"
