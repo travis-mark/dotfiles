@@ -8,6 +8,7 @@ PATH=${HOME}/.local/bin:$PATH # PIP
 PATH=${HOME}/go/bin:$PATH # Go
 PATH="/opt/homebrew/opt/ruby/bin:$PATH" # Ruby
 PATH=${HOME}/.emacs.d/bin:$PATH # Emacs
+PATH=${HOME}/Library/Android/sdk/platform-tools:$PATH # Android
 PATH=${HOME}/bin:$PATH # Scripts
 PATH=${HOME}/local/bin:$PATH # Small compiled programs
 export ANDROID_HOME=${HOME}/Library/Android/sdk/
