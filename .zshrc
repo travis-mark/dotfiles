@@ -44,6 +44,10 @@ function git-claim-subaru {
     git config --add --local core.sshCommand 'ssh -i ~/.ssh/id_ed25519_subaru -o IdentitiesOnly=yes'
 }
 
+function pbsort {
+    pbpaste | sort "$@" | pbcopy
+}
+
 # Run HTTP server then open browser
 function up {
     PORT=$(( $RANDOM % 48576 + 16384 ))
