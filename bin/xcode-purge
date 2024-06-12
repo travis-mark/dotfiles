@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "Remove dervied data"
+echo "Remove derived data"
 rm -rf ~/Library/Developer/Xcode/DerivedData
 
 echo "Reset packages cache"
