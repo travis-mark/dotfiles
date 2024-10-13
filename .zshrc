@@ -69,3 +69,4 @@ alias octordle='cat ${HOME}/share/octordle | fzf'
 alias skiping='ping skitheeast.asuscomm.com'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
