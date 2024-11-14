@@ -65,6 +65,7 @@ alias ll='exa -l'
 alias log='git checkout $(pick-commit)'
 alias pcd='cd $(list-projects | fzf)'
 alias dictwords='cat /usr/share/dict/words | fzf'
+alias wordle='cat ${HOME}/share/wordle | fzf'
 alias octordle='cat ${HOME}/share/octordle | fzf'
 alias skiping='ping skitheeast.asuscomm.com'
 
