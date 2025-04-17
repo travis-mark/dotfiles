@@ -7,4 +7,6 @@ touch ~/.hushlogin # Silence "last login" message
 # (h) do not follow link (useful when replacing folder links)
 ln -sivh "$PROJECT/bin" "$HOME/bin"
 ln -sivh "$PROJECT/share" "$HOME/share"
+ln -sivh "$PROJECT/.emacs.d" "$HOME/.emacs.d"
+ln -sivh "$PROJECT/.gitconfig" "$HOME/.gitconfig"
 ln -sivh "$PROJECT/.zshrc" "$HOME/.zshrc"
