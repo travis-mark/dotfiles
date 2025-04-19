@@ -33,6 +33,12 @@ function pick-commit {
     git log --decorate --pretty="format:%h - %an: %s" --abbrev-commit | fzf --preview 'git show --color=always --stat {1}' | awk '{print $1}'
 }
 
+function git-claim-penndotvso {
+    git config --add --local user.name 'Travis Luckenbaugh'
+    git config --add --local user.email 'c-tralucke@pa.gov'
+    git config --add --local core.sshCommand 'ssh -i ~/.ssh/id_penndot_c_tralucke -o IdentitiesOnly=yes'
+}
+
 function git-claim-personal {
     git config --add --local user.name 'Travis Luckenbaugh'
     git config --add --local user.email 'tluckenbaugh@gmail.com'
