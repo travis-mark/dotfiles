@@ -68,6 +68,11 @@ function xman {
     open x-man-page://$1
 }
 
+# Find potentially large source code files
+function bigfiles {
+    fd -t f -E "*.png" -E "*.xcodeproj" | xargs wc -l | sort
+}
+
 alias ll='exa -l'
 alias log='git checkout $(pick-commit)'
 alias pcd='cd $(list-projects | fzf)'
